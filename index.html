@@ -4,207 +4,86 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jesper & Linnéa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Cormorant Garamond"', 'serif'],
+            body: ['"Inter"', 'sans-serif'],
+          },
+          colors: {
+            sand: {
+              50: '#f7f5f0',
+              200: '#d4cdc3',
+              300: '#c9bfb2',
+              400: '#c0b8ad',
+              500: '#8a7e72',
+              600: '#6b6158',
+              700: '#5a544e',
+              800: '#3a3632',
+              900: '#2c2825',
+            },
+            error: '#a85a4a',
+          }
+        }
+      }
     }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
-      background: #f7f5f0;
-      color: #3a3632;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem 1rem;
-    }
-
-    .card {
-      max-width: 480px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .names {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: 3.2rem;
-      line-height: 1.15;
-      letter-spacing: 0.01em;
-      color: #2c2825;
-      margin-bottom: 0.3rem;
-    }
-
-    .names em {
-      font-style: italic;
-      font-weight: 300;
-    }
-
-    .subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      color: #8a7e72;
-      margin-bottom: 2.5rem;
-    }
-
-    .date {
-      font-size: 0.85rem;
-      font-weight: 400;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #6b6158;
-      margin-bottom: 3rem;
-    }
-
-    .divider {
-      width: 40px;
-      height: 1px;
-      background: #c9bfb2;
-      margin: 0 auto 3rem;
-    }
-
-    .form-group {
-      margin-bottom: 1.2rem;
-      text-align: left;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #8a7e72;
-      margin-bottom: 0.4rem;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 0.75rem 0;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: #2c2825;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid #d4cdc3;
-      outline: none;
-      transition: border-color 0.3s;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-bottom-color: #8a7e72;
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: #c0b8ad;
-    }
-
-    .form-group select {
-      cursor: pointer;
-      -webkit-appearance: none;
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a7e72' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 0 center;
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 60px;
-    }
-
-    button[type="submit"] {
-      margin-top: 2rem;
-      width: 100%;
-      padding: 0.9rem;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #f7f5f0;
-      background: #3a3632;
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    button[type="submit"]:hover {
-      background: #5a544e;
-    }
-
-    button[type="submit"]:disabled {
-      background: #b0a99f;
-      cursor: not-allowed;
-    }
-
-    .confirmation {
-      display: none;
-      margin-top: 2rem;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      font-style: italic;
-      color: #6b6158;
-    }
-
-    .error-msg {
-      display: none;
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      color: #a85a4a;
-    }
-  </style>
+  </script>
 </head>
-<body>
-  <div class="card">
-    <h1 class="names">Jesper <em>&</em> Linnéa</h1>
-    <p class="subtitle">gifter sig</p>
-    <p class="date">Lördag 28 Augusti 2027</p>
-    <div class="divider"></div>
+<body class="font-body font-light bg-sand-50 text-sand-800 min-h-screen flex justify-center items-center px-4 py-8">
 
-    <form id="osa-form">
-      <div class="form-group">
-        <label for="namn">Namn</label>
-        <input type="text" id="namn" name="namn" placeholder="Förnamn & efternamn" required>
+  <div class="max-w-md w-full text-center">
+    <h1 class="font-display font-light text-5xl leading-tight tracking-tight text-sand-900 mb-1">
+      Jesper <em class="italic font-light">&</em> Linnéa
+    </h1>
+    <p class="font-display text-xl tracking-wider text-sand-500 mb-10">gifter sig</p>
+    <p class="text-sm font-normal uppercase tracking-[0.15em] text-sand-600 mb-12">Lördag 28 Augusti 2027</p>
+    <div class="w-10 h-px bg-sand-300 mx-auto mb-12"></div>
+
+    <form id="osa-form" class="space-y-5">
+      <div class="text-left">
+        <label for="namn" class="block text-[0.7rem] font-medium uppercase tracking-[0.12em] text-sand-500 mb-1">Namn</label>
+        <input type="text" id="namn" name="namn" placeholder="Förnamn & efternamn" required
+          class="w-full py-3 bg-transparent border-b border-sand-200 text-sand-900 font-light outline-none transition-colors duration-300 focus:border-sand-500 placeholder:text-sand-400">
       </div>
 
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="din@email.se">
+      <div class="text-left">
+        <label for="email" class="block text-[0.7rem] font-medium uppercase tracking-[0.12em] text-sand-500 mb-1">Email</label>
+        <input type="email" id="email" name="email" placeholder="din@email.se"
+          class="w-full py-3 bg-transparent border-b border-sand-200 text-sand-900 font-light outline-none transition-colors duration-300 focus:border-sand-500 placeholder:text-sand-400">
       </div>
 
-      <div class="form-group">
-        <label for="bekraftelse">Kan du komma?</label>
-        <select id="bekraftelse" name="bekraftelse" required>
+      <div class="text-left">
+        <label for="bekraftelse" class="block text-[0.7rem] font-medium uppercase tracking-[0.12em] text-sand-500 mb-1">Kan du komma?</label>
+        <select id="bekraftelse" name="bekraftelse" required
+          class="w-full py-3 bg-transparent border-b border-sand-200 text-sand-900 font-light outline-none appearance-none cursor-pointer transition-colors duration-300 focus:border-sand-500 bg-[url('data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2712%27%20height=%277%27%3E%3Cpath%20d=%27M1%201l5%205%205-5%27%20stroke=%27%238a7e72%27%20fill=%27none%27%20stroke-width=%271.5%27/%3E%3C/svg%3E')] bg-no-repeat bg-[position:right_center]">
           <option value="" disabled selected>Välj ett alternativ</option>
           <option value="Ja">Ja, jag kommer</option>
           <option value="Nej">Nej, jag kan tyvärr inte</option>
         </select>
       </div>
 
-      <div class="form-group">
-        <label for="allergier">Matpreferenser / allergier</label>
-        <input type="text" id="allergier" name="allergier" placeholder="T.ex. vegetarian, glutenfri...">
+      <div class="text-left">
+        <label for="allergier" class="block text-[0.7rem] font-medium uppercase tracking-[0.12em] text-sand-500 mb-1">Matpreferenser / allergier</label>
+        <input type="text" id="allergier" name="allergier" placeholder="T.ex. vegetarian, glutenfri..."
+          class="w-full py-3 bg-transparent border-b border-sand-200 text-sand-900 font-light outline-none transition-colors duration-300 focus:border-sand-500 placeholder:text-sand-400">
       </div>
 
-      <button type="submit">Skicka OSA</button>
+      <button type="submit"
+        class="mt-8 w-full py-4 text-xs font-medium uppercase tracking-[0.18em] text-sand-50 bg-sand-800 hover:bg-sand-700 disabled:bg-sand-300 disabled:cursor-not-allowed cursor-pointer transition-colors duration-300">
+        Skicka OSA
+      </button>
     </form>
 
-    <p class="confirmation">Tack! Vi har mottagit ditt svar.</p>
-    <p class="error-msg">Något gick fel. Försök igen eller kontakta oss direkt.</p>
+    <p id="confirmation" class="hidden mt-8 font-display text-xl italic text-sand-600">
+      Tack! Vi har mottagit ditt svar.
+    </p>
+    <p id="error-msg" class="hidden mt-4 text-sm text-error">
+      Något gick fel. Försök igen eller kontakta oss direkt.
+    </p>
   </div>
 
   <script>
@@ -233,9 +112,9 @@
         });
 
         document.getElementById('osa-form').style.display = 'none';
-        document.querySelector('.confirmation').style.display = 'block';
+        document.getElementById('confirmation').style.display = 'block';
       } catch (err) {
-        document.querySelector('.error-msg').style.display = 'block';
+        document.getElementById('error-msg').style.display = 'block';
         btn.disabled = false;
         btn.textContent = 'Skicka OSA';
       }
